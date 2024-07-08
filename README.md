@@ -26,23 +26,23 @@
 * Setup OBS default `scene`, add a `delay filter` of 500 ms to it and assign a `source`
 * Enable OBS WebSocket via `Tools -> WebSocket Server Settings`
 * Set parameters on `config.json` accordingly
-* Insert `.png`-images of the object(s) you do not want to show in your live-stream (they will get masked by a black rectangle) to the folder `img/`
+* Insert `.png`-images of the object(s) you do not want to show in your live-stream (they will get masked by a black rectangle) to the folder `data/img/`
 
     To guarantee an object getting detected properly make sure your image contains significant features identifying the object itself. If necessary pre-process the image with e.g. GIMP and cut out irrelevant parts before using for detection. 
     
-    There are already two examples in `img/` for a map-filter of an online game, delete those images if you do not need them.
+    There are already two examples in `data/img/` for a map-filter of an online game, delete those images if you do not need them.
 
 
 
 ## 3. Run 
 * Launch the main script by typing
 
-    * on Windows: `.venv\Scripts\python run.py img`
+    * on Windows: `.venv\Scripts\python run.py`
 
-    * on Linux: `.venv/bin/python run.py img/`
+    * on Linux: `.venv/bin/python run.py`
 
     or 
 
-    * `.venv/bin/python run.py img/ --password=<your password>` 
+    * `.venv/bin/python run.py --password=<your password> --img-dir=<custom image folder>` 
 
-    if you have set a password for the OBS WebSocket Server.
+    if you have set a password for the OBS WebSocket Server or want to set a custom directory for your image `.png` files.

@@ -60,8 +60,10 @@ if __name__ == "__main__":
             p.check_returncode()
 
         # print("Setting up opencv-contrib module...")
-        # run(
-        #     "cp -r venv/lib/python3.11/site-packages/cv2 .venv/lib/python3.11/site-packages/"
-        # )
+        # subprocess.check_call(
+        #         [
+        #             "cp -r build/target-install/windows/usr/local/lib/* .venv/Lib/",
+        #         ]
+        #     )
     except subprocess.CalledProcessError as e:
         print(f"Failed to execute command: {e.cmd}, exited with code: {e.returncode}")

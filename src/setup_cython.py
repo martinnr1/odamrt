@@ -17,7 +17,7 @@ from setuptools import Extension, setup
 extensions = [
     Extension(
         "detector_cython",
-        ["detection/detector_cython.pyx"],
+        ["src/detection/detector_cython.pyx"],
         extra_compile_args=["-O3", "-Wno-cpp", "-fopenmp"],
         extra_link_args=["-fopenmp"],
         define_macros=[

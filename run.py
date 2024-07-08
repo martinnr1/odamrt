@@ -14,12 +14,12 @@ import subprocess
 import traceback
 import logging as log
 
-import core.main as main
+import src.core.main as main
 
 if __name__ == "__main__":
     log.info(
         subprocess.Popen(
-            ".venv/bin/python setup_cython.py build_ext --inplace",
+            ".venv/bin/python src/setup_cython.py build_ext --inplace",
             shell=True,
             stdout=subprocess.PIPE,
         ).stdout.read()

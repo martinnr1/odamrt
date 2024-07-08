@@ -1,11 +1,7 @@
 .vscode/
 
-gimp/
-mask/
-haar/
-face_detection.py
+*.sh
 *.c
-cuda_setup.sh
 
 __pycache__/
 *.py[cod]

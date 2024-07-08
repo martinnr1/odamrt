@@ -31,8 +31,8 @@ from cv2 import Feature2D, KeyPoint
 from cv2.typing import MatLike, Point2f
 from mss import mss
 
-import detection.detector as detector
-import obs.obssocket as obssocket
+import src.detection.detector as detector
+import src.obs.obssocket as obssocket
 
 
 import platform
@@ -86,7 +86,7 @@ log = logging.getLogger(__name__)
 ###
 
 
-MASK_DIR = join(os.getcwd(), "mask")
+MASK_DIR = join(os.getcwd(), "data/mask/")
 
 DEBUGGING = False
 OBJECT_TRACING = True
@@ -344,14 +344,16 @@ def frame_action(
 @click.option(
     "--gpu", is_flag=True
 )  # use gpu acceleration with cuda (high gpu load - not recommended while gaming)
-@click.argument(
-    "resource-dir", type=click.Path(exists=True, file_okay=False, dir_okay=True)
+@click.option(
+    "--img-dir",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True),
+    default="data/img/",
 )
 @click.option("--password")
 # @click.option(
 #     "--tracing", is_flag=True
 # )  # support masking objects that only slightly move over the screen instead of immediately appearing objects when they
-def main(resource_dir, password, debug, gpu, preprocessing):
+def main(img_dir, password, debug, gpu, preprocessing):
     global DEBUGGING, OBJECT_TRACING, GPU_CUDA, FRAME_PREPROCESSING, obs
 
     DEBUGGING = debug
@@ -382,9 +384,7 @@ def main(resource_dir, password, debug, gpu, preprocessing):
     default_source_name, scene_h, scene_w = obs.getSourceInfo(default_scene_name)
 
     image_files = [
-        join(resource_dir, f)
-        for f in os.listdir(resource_dir)
-        if isfile(join(resource_dir, f))
+        join(img_dir, f) for f in os.listdir(img_dir) if isfile(join(img_dir, f))
     ]
 
     image_objects = [
