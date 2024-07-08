@@ -1,0 +1,5 @@
+{
+    "default_scene_name": "LiveGaming",
+    "obs_server_address": "127.0.0.1",
+    "obs_server_port": 4455
+}
