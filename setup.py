@@ -40,24 +40,20 @@ if __name__ == "__main__":
 
         print("Downloading python modules... (this could take a moment)")
         if is_windows() == True:
-            subprocess.check_call(
-                [
-                    ".venv\\Scripts\\python",
-                    "-m",
-                    "pip",
-                    "install",
-                    "-r",
-                    "requirements.txt",
-                ]
-            )
+            exec = os.path.abspath(".venv/Scripts/python")
+
         else:
-            exec = "/bin/bash"
-            p = subprocess.run(
-                f".venv/bin/python -m pip install -r requirements.txt",
-                shell=True,
-                executable=exec,
-            )
-            p.check_returncode()
+            exec = ".venv/bin/python"
+        subprocess.check_call(
+            [
+                exec,
+                "-m",
+                "pip",
+                "install",
+                "-r",
+                "requirements.txt",
+            ]
+        )
 
         # print("Setting up opencv-contrib module...")
         # subprocess.check_call(

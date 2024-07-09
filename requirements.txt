@@ -29,8 +29,6 @@ python3-xlib
 pytweening
 six
 sqlparse
-websocket
 websocket-client
-websockets
 zope.event
 zope.interface
